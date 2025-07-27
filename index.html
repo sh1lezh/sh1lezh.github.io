@@ -3,122 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shailesh</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <title>sh1lezh</title>
     <link rel="stylesheet" href="style.css">
-    <script src="./tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <div id="tsparticles"></div>
+    
+    <nav>
+        <div class="left">sh1lezh</div>
+        <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
 
-    <header>
-        <nav>
-            <div class="left">sh1lezh</div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <section id="home" class="firstSection section">
+        <div class="leftSection">
+            <h1 class="hero-title">Hey! I'm Shailesh</h1>
+            <div>- Founder & Engineer</div>
+            <div class="buttons">
+                <a href="#contact" class="btn contact-btn">Contact Me</a>
+                <a href="/blog.html" class="btn blog-btn">Read My Blog</a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+        </div>
+    </section>
 
-    <main>
-        <section class="firstSection" id="home">
-            <div class="leftSection">
-                <h1 class="hero-title">Hey! I'm Shailesh</h1>
-                <div>- <span id="element">Founder & Engineer</span></div>
-                <div class="buttons">
-                    <a href="#contact" class="btn contact-btn">Contact Me</a>
-                    <a href="blog.html" class="btn blog-btn">Read My Blog</a>
-                </div>
-            </div>
-        </section>
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="section-content">
+            I'm an engineer and entrepreneur with experience in crafting cutting-edge software & AI solutions that drive real-world impact. My expertise spans machine learning, deep learning and software development with a focus on building scalable, efficient, and ethical softwares & AI systems. Proficient in Python, Rust, Typescript and cloud platforms, I thrive at the intersection of innovation and practical application. As a founder, I lead cross-functional teams to deliver transformative technologies, while my passion for open-source contributions fuels my commitment to advancing the global community. I'm constantly exploring emerging trends, to push the boundaries of what's possible.
+        </div>
+    </section>
 
-        <section class="section" id="about">
-            <h2>About Me</h2>
-            <div class="section-content">
-                <p>I'm an engineer and entrepreneur with experience in crafting cutting-edge software & AI solutions that drive real-world impact. My expertise spans machine learning, deep learning and software development with a focus on building scalable, efficient, and ethical softwares & AI systems. Proficient in Python, Rust, Typescript and cloud platforms, I thrive at the intersection of innovation and practical application. As a founder, I lead cross-functional teams to deliver transformative technologies, while my passion for open-source contributions fuels my commitment to advancing the global community. I'm constantly exploring emerging trends, to push the boundaries of what's possible.</p>
+    <section id="work" class="section">
+        <h2>Work Experience</h2>
+        <div class="work-grid">
+            <div class="work-card">
+                <h3>Shverux</h3>
+                <h4>Partner</h4>
+                <div class="date">June 2025 - Present</div>
+                <p>Leading backend and AI development to create full-stack AI solutions for businesses and startups.</p>
+                <a href="https://shverux.com" class="card-button">Visit Website</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section" id="work">
-            <h2>Work Experience</h2>
-            <div class="work-grid">
-                <div class="work-card">
-                    <h4>Cofounder</h4>
-                    <h3>Srible</h3>
-                    <p class="date">April 2025 - Present</p>
-                    <p>Leading full-stack and AI development to create a fast and simple blog app</p>
-                    <a href="https://srible.com" target="_blank" rel="noopener noreferrer" class="card-button">Visit Website</a>
-                </div>
-                <div class="work-card">
-                    <h4>Partner</h4>
-                    <h3>Shverux</h3>
-                    <p class="date">June 2025 - Present</p>
-                    <p>Leading backend and AI development to create full-stack AI solutions for businesses and startups.</p>
-                    <a href="https://shverux.com" target="_blank" rel="noopener noreferrer" class="card-button">Visit Website</a>
-                </div>
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>ML Development</h3>
+                <p>Currently exploring advanced ML and DL libraries and framework to create advance AI developments.</p>
             </div>
-        </section>
+            <div class="project-card">
+                <h3>Open Source Contributions</h3>
+                <p>Actively contributing to ML and backend libraries and frameworks to enhance development.</p>
+            </div>
+            <div class="project-card">
+                <h3>Full-stack Development</h3>
+                <p>Currently learning and working on full-stack development with typescript, rust and python</p>
+            </div>
+        </div>
+    </section>
 
-        <section class="section" id="projects">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>ML Development</h3>
-                    <p>Currently exploring advanced ML and DL libraries and framework to create advance AI developments.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Open Source Contributions</h3>
-                    <p>Actively contributing to ML and backend libraries and frameworks to enhance development.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Full-stack Development</h3>
-                    <p>Currently learning and working on full-stack development with typescript, rust and python</p>
-                </div>
+    <section id="contact" class="section">
+        <h2>Get In Touch</h2>
+        <div class="section-content">
+            Let's collaborate on your next project! You can reach out to me through the following platforms:
+        </div>
+        <div class="contact-card">
+            <div class="social-links">
+                <a href="mailto:contactsh1lezh@gmail.com" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    contactsh1lezh@gmail.com
+                </a>
+                <a href="https://x.com/sh1lezh" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                    </svg>
+                    @sh1lezh
+                </a>
+                <a href="https://linkedin.com/in/sh1lezh" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    @sh1lezh
+                </a>
+                <a href="https://github.com/sh1lezh" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    @sh1lezh
+                </a>
             </div>
-        </section>
-
-        <section class="section" id="contact">
-            <h2>Get In Touch</h2>
-            <div class="section-content">
-                <p>Let's collaborate on your next project! You can reach out to me through the following platforms:</p>
-                <div class="social-links contact-methods-grid">
-                    <a href="mailto:contactsh1lezh@gmail.com" class="social-link" aria-label="Email">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22 4H2C0.89 4 0 4.89 0 6V18C0 19.11 0.89 20 2 20H22C23.11 20 24 19.11 24 18V6C24 4.89 23.11 4 22 4ZM22 8L12 15L2 8V6L12 13L22 6V8Z"/></svg>
-                        <span>contactsh1lezh@gmail.com</span>
-                    </a>
-                    <a href="https://discord.com/users/sh1lezh" target="_blank" class="social-link" aria-label="Discord">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.36981C18.868 3.74081 17.349 3.29581 15.774 3.03081C15.759 3.08881 15.746 3.14681 15.732 3.20481C14.537 2.89881 13.294 2.74881 12 2.74881C10.706 2.74881 9.463 2.89881 8.268 3.20481C8.254 3.14681 8.241 3.08881 8.226 3.03081C6.651 3.29581 5.132 3.74081 3.683 4.36981C0.632 9.00881 -0.342 13.5758 0.099 18.0548C1.933 19.4318 3.92 20.2698 6.023 20.7668C6.349 20.2138 6.64 19.6308 6.891 19.0208C6.332 18.7838 5.801 18.4988 5.305 18.1668C5.353 18.1108 5.4 18.0538 5.448 17.9958C5.962 18.2778 6.505 18.5298 7.076 18.7458C7.327 18.2408 7.552 17.7178 7.748 17.1758C10.453 18.2438 13.547 18.2438 16.252 17.1758C16.448 17.7178 16.673 18.2408 16.924 18.7458C17.495 18.5298 18.038 18.2778 18.552 17.9958C18.6 18.0538 18.647 18.1108 18.695 18.1668C18.199 18.4988 17.668 18.7838 17.109 19.0208C17.36 19.6308 17.651 20.2138 17.977 20.7668C20.08 20.2698 22.067 19.4318 23.901 18.0548C24.408 13.0398 22.823 8.44181 20.317 4.36981ZM8.02 15.0348C7.111 15.0348 6.362 14.2858 6.362 13.3768C6.362 12.4678 7.111 11.7188 8.02 11.7188C8.929 11.7188 9.678 12.4678 9.664 13.3768C9.664 14.2858 8.929 15.0348 8.02 15.0348ZM15.98 15.0348C15.071 15.0348 14.322 14.2858 14.322 13.3768C14.322 12.4678 15.071 11.7188 15.98 11.7188C16.889 11.7188 17.638 12.4678 17.624 13.3768C17.624 14.2858 16.889 15.0348 15.98 15.0348Z"/></svg>
-                        <span>@sh1lezh</span>
-                    </a>
-                    <a href="https://twitter.com/sh1lezh" target="_blank" class="social-link" aria-label="Twitter">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        <span>@sh1lezh</span>
-                    </a>
-                    <a href="https://github.com/sh1lezh" target="_blank" class="social-link" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        <span>@sh1lezh</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
-        <div class="footer-rights">Copyright © sh1lezh.github.io | All Rights Reserved</div>
+        <div class="footer Rights">Copyright © sh1lezh.github.io | All Rights Reserved</div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
