@@ -39,7 +39,7 @@
         }
 
         header {
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
             border-bottom: 2px solid var(--text-color);
             padding-bottom: 1rem;
         }
@@ -48,7 +48,7 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
         }
 
         .profile a {
@@ -76,28 +76,6 @@
             letter-spacing: 2px;
             font-size: 1.8rem;
             text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-link {
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--text-color);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            position: relative;
-        }
-
-        .nav-link:hover, .nav-link:focus {
-            color: var(--accent);
-        }
-
-        .nav-link.active {
-            color: var(--accent);
         }
 
         main section {
@@ -198,11 +176,6 @@
                 align-items: flex-start;
             }
 
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
             .site-title {
                 font-size: 1.5rem;
             }
@@ -215,11 +188,6 @@
         <div class="profile">
             <h1 class="site-title">sh1lezh</h1>
         </div>
-        <nav class="nav-links">
-            <a href="#about" class="nav-link active">about</a>
-            <a href="#work" class="nav-link">work</a>
-            <a href="#socials" class="nav-link">socials</a>
-        </nav>
     </header>
 
     <main>
@@ -263,15 +231,7 @@
         </section>
     </main>
     <script>
-        const navLinks = document.querySelectorAll('.nav-link');
         const socialLinks = document.querySelectorAll('.social-link');
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.forEach(navLink => navLink.classList.remove('active'));
-                link.classList.add('active');
-            });
-        });
 
         socialLinks.forEach(link => {
             link.addEventListener('click', (e) => {
