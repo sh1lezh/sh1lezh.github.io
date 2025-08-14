@@ -92,7 +92,7 @@
             position: relative;
         }
 
-        .nav-link:hover {
+        .nav-link:hover, .nav-link:focus {
             color: var(--accent);
         }
 
@@ -165,11 +165,16 @@
             transition: all 0.2s ease-in-out;
         }
 
-        .social-link:hover {
+        .social-link:hover, .social-link:focus {
             background-color: var(--text-color);
             color: var(--bg-color);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link:active {
+            transform: translateY(0);
+            box-shadow: none;
         }
 
         .inline-link {
@@ -259,11 +264,20 @@
     </main>
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
+        const socialLinks = document.querySelectorAll('.social-link');
 
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.forEach(navLink => navLink.classList.remove('active'));
                 link.classList.add('active');
+            });
+        });
+
+        socialLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                setTimeout(() => {
+                    e.target.blur();
+                }, 500);
             });
         });
     </script>
