@@ -142,17 +142,21 @@
             font-size: 0.8rem;
             transition: all 0.2s ease-in-out;
         }
-
-        .social-link:hover, .social-link:focus {
+        
+        .social-link:active {
             background-color: var(--text-color);
             color: var(--bg-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .social-link:active {
             transform: translateY(0);
             box-shadow: none;
+        }
+
+        @media (hover: hover) {
+            .social-link:hover, .social-link:focus {
+                background-color: var(--text-color);
+                color: var(--bg-color);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
         }
 
         .inline-link {
@@ -237,7 +241,7 @@
             link.addEventListener('click', (e) => {
                 setTimeout(() => {
                     e.target.blur();
-                }, 500);
+                }, 300);
             });
         });
     </script>
