@@ -1,208 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shailesh</title>
+    <title>AI Inference Optimization & Edge Deployment</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicons/favicon-32x32.png" type="image/png" sizes="32x32">
-    <link rel="icon" href="favicons/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --accent-color: #000000;
-            --secondary-text: #555555;
+            --bg-color: #050505;
+            --surface-color: #111111;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a3a3a3;
+            --accent-color: #ffffff;
+            --border-color: #333333;
         }
 
         body {
-            font-family: "Space Mono", monospace;
-            color: var(--text-color);
-            line-height: 1.7;
-            padding: 2rem;
-            max-width: 750px;
-            margin: 0 auto;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
         }
 
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header & Nav */
         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.9;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin: 0 0 1.5rem 0;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 0 2.5rem 0;
+        }
+
+        .primary-cta {
+            display: inline-block;
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .primary-cta:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Services Section */
+        .section-header {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .service-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .service-card h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.25rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Technical Stack */
+        .stack-section {
+            margin-bottom: 5rem;
+        }
+
+        .stack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Lead Gen / Footer */
+        .lead-gen {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 8px;
             margin-bottom: 4rem;
         }
 
-        .header-title {
-            font-family: 'VT323', monospace;
-            font-size: 2.5rem;
-            margin: 0;
-            color: var(--accent-color);
-        }
-
-        .header-subtitle {
-            font-size: 1.1rem;
-            margin: 0 0 1.5rem 0;
-            color: var(--text-color);
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1.5rem;
-        }
-
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        nav a.active {
-            color: var(--accent-color);
-            text-decoration: underline;
-        }
-
-        main section {
-            margin-bottom: 3rem;
-        }
-
-        h2 {
-            color: var(--accent-color);
-            font-family: 'VT323', monospace;
+        .lead-gen h2 {
+            margin: 0 0 1rem 0;
             font-size: 2rem;
-            margin-bottom: 1rem;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 2rem 0;
-        }
-
-        .miscellanea-list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1rem;
-        }
-
-        .miscellanea  -list li {
-            color: var(--secondary-text);
-        }
-
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-
-        @media (hover: hover) {
-            nav a:hover {
-                color: var(--accent-color);
-                text-decoration: underline;
-            }
-
-            a:hover {
-                text-decoration: underline;
-            }
+        .lead-gen p {
+            color: var(--text-secondary);
+            margin: 0 auto 2rem auto;
+            max-width: 500px;
         }
 
         footer {
-            margin-top: 4rem;
-            text-align: center;
-            color: var(--secondary-text);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 1.5rem;
-                font-size: 0.95rem;
-            }
-
-            header {
-                margin-bottom: 3rem;
-            }
-
-            nav {
-                gap: 0.5rem 1rem;
-            }
-
-            .header-title {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.75rem;
-            }
-        }
-
-        .image-row {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
             display: flex;
-            gap: 0rem;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .hero { padding: 4rem 0 3rem 0; }
         }
     </style>
 </head>
-
 <body>
 
-    <header>
-        <h1 class="header-title">shailesh</h1>
-        <!-- <p class="header-subtitle">robotics & software engineer.</p> -->
-        <nav>
-            <a href="#about" class="active">about</a>
-            <a href="https://github.com/sh1lezh" target="_blank">github</a>
-            <!-- <a href="https://x.com/sh1lezh" target="_blank">x/twitter</a> -->
-            <!-- <a href="https://linkedin.com/in/sh1lezh" target="_blank">linkedin</a> -->
-        </nav>
-    </header>
+    <div class="container">
+        <header>
+            <a href="#" class="logo">shailesh</a>
+            <a href="mailto:contactsh1lezh@gmail.com?subject=Requesting%20an%20Inference%20Optimization%20Audit&body=Hi%20Shailesh%2C%0A%0AI%20am%20interested%20in%20getting%20a%20technical%20audit%20for%20our%20AI%20inference%20pipeline.%20We%20are%20looking%20to%20reduce%20our%20compute%20costs%20and%20optimize%20our%20deployment.%0A%0APlease%20let%20me%20know%20your%20availability%20for%20a%20quick%20discovery%20call.%0A%0ABest%2C%0A%5BYour%20Name%2FCompany%5D" class="nav-cta">Request Audit</a>
+        </header>
 
-    <main>
-        <section id="about">
-            <h2>about me</h2>
-            <p>
-                i'm shailesh. i'm into robotics & software engineering, i build systems that solve problems. currently writing backend systems for web apps.
-            </p>
-            <p>
-                want to reach out? just send me an email to <strong><a
-                    href="mailto:contactsh1lezh@gmail.com">contactsh1lezh@gmail.com</a></strong>.
-            </p>
-        </section>
-        
-        <section id="focus">
-            <h2>current focus</h2>
-            <p>
-                currently, i'm open to work for backend development with python and system development with c.
-            </p>
-            <p>
-                also, learning about ai & robotics.
-            </p>
-        </section>
+        <main>
+            <section class="hero">
+                <h1>Stop wasting compute. Optimize your AI infrastructure.</h1>
+                <p>We provide bare-metal systems engineering to slash your inference costs and deploy machine learning models efficiently on-premise or at the edge.</p>
+                <a href="mailto:contactsh1lezh@gmail.com?subject=Technical%20Audit%20Inquiry%3A%20AI%20Inference&body=Hi%20Shailesh%2C%0A%0AWe%20are%20currently%20running%20into%20bottlenecks%2Fhigh%20costs%20with%20our%20AI%20inference%20and%20want%20to%20explore%20bare-metal%20optimization.%0A%0AI'd%20like%20to%20schedule%20a%20time%20to%20discuss%20an%20audit%20of%20our%20current%20architecture.%0A%0AThanks%2C%0A%5BYour%20Name%2FCompany%5D" class="primary-cta">Get a Technical Audit</a>
+            </section>
 
-        <section id="miscellanea">
-            <h2>miscellanea</h2>
-            <ul class="miscellanea-list">
-                <li>python</li>
-                <li>c</li>
-                <li>backend</li>
-                <li>ml/dl</li>
-                <li>robotics</li>
-                <li>linux</li>
-            </ul>
-            <img src="./image1.webp" alt="guts" style="width: 100%;">
-            <div class="image-row">
-                <img src="./image2.jpeg" alt="win" style="width: 50%;">
-                <img src="./image3.jpeg" alt="win" style="width: 50%;">
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>
-            shailesh.site
-        </p>
-    </footer>
+            <section class="services">
+                <div class="section-header">Core Services</div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>01. Inference Optimization Audit</h3>
+                        <p>A rigorous, deep-dive profile of your current ML containers. We identify memory bottlenecks, evaluate compute versus memory-bound constraints, and deliver a technical roadmap to reduce your VRAM footprint and increase tokens-per-second throughput.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>02. On-Premise & Edge Deployment</h3>
+                        <p>Escape cloud API lock-in. We build high-performance, custom inference engines to run your quantized models on local hardware. We ensure maximum efficiency on everything from standard CPU architectures to dedicated GPU clusters.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stack-section">
+                <div class="section-header">Technical Stack & Methodology</div>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                    We approach AI deployment as a systems engineering discipline. Solutions are architected in low-level languages for absolute memory control and speed. We routinely validate edge constraints by testing pipelines on standard consumer hardware before scaling to production environments.
+                </p>
+                <div class="stack-tags">
+                    <span class="tag">C</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Rust</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">CUDA</span>
+                    <span class="tag">TensorRT</span>
+                    <span class="tag">OpenVINO</span>
+                    <span class="tag">ONNX</span>
+                </div>
+            </section>
+
+            <section class="lead-gen">
+                <h2>Ready to lower your cloud bill?</h2>
+                <p>Book a brief technical discovery call. We'll discuss your current inference pipeline and determine if an optimization audit makes financial sense for your company.</p>
+                <a href="mailto:contactsh1lezh@gmail.com?subject=Inquiry%3A%20AI%20Infrastructure%20%26%20Edge%20Deployment&body=Hi%20Shailesh%2C%0A%0AI%20was%20looking%20at%20your%20services%20and%20would%20like%20to%20discuss%20a%20potential%20project%20regarding%20our%20AI%20infrastructure%20and%20deployment%20needs.%0A%0ALet's%20schedule%20a%20time%20to%20chat.%0A%0ABest%2C%0A%5BYour%20Name%2FCompany%5D" class="primary-cta">Contact</a>
+            </section>
+        </main>
+
+        <footer>
+            <div>© 2026 Shailesh</div>
+        </footer>
+    </div>
+
 </body>
 </html>
