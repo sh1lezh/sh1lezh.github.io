@@ -1,259 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Inference Optimization & Edge Deployment</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #050505;
-            --surface-color: #111111;
-            --text-primary: #f5f5f5;
-            --text-secondary: #a3a3a3;
-            --accent-color: #ffffff;
-            --border-color: #333333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shailesh | AI Cost Optimization & Inference Engineering</title>
 
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+<style>
+:root {
+    /* Color Palette */
+    --bg: #050505;
+    --surface: #0e0e0e;
+    --surface-hover: #151515;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a1a1aa;
+    --border: #27272a;
+    --border-hover: #3f3f46;
+    --accent: #3b82f6;
+    --accent-glow: rgba(59, 130, 246, 0.15);
+    
+    /* Layout */
+    --container-width: 1000px;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --transition: 0.3s ease;
+}
 
-        /* Header & Nav */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* Prevent accidental horizontal scroll */
+}
 
-        .nav-cta {
-            background-color: var(--text-primary);
-            color: var(--bg-color);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: opacity 0.2s;
-        }
+.container {
+    max-width: var(--container-width);
+    margin: auto;
+    padding: 0 1.5rem;
+}
 
-        .nav-cta:hover {
-            opacity: 0.9;
-        }
+/* Animations */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        /* Hero Section */
-        .hero {
-            padding: 6rem 0 4rem 0;
-        }
+.animate {
+    animation: fadeUp 0.6s ease forwards;
+}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin: 0 0 1.5rem 0;
-            letter-spacing: -1px;
-        }
+/* Header */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 0;
+}
 
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 0 2.5rem 0;
-        }
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .primary-cta {
-            display: inline-block;
-            background-color: var(--text-primary);
-            color: var(--bg-color);
-            padding: 1rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.2s, opacity 0.2s;
-        }
+.logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    text-decoration: none;
+}
 
-        .primary-cta:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
+.logo span {
+    color: var(--accent);
+}
 
-        /* Services Section */
-        .section-header {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
+/* Hero Section */
+.hero {
+    padding: 8rem 0 6rem;
+    animation-delay: 0.1s;
+}
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 5rem;
-        }
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    font-weight: 700;
+}
 
-        .service-card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 8px;
-        }
+.hero p {
+    color: var(--text-secondary);
+    max-width: 650px;
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+}
 
-        .service-card h3 {
-            margin: 0 0 1rem 0;
-            font-size: 1.25rem;
-        }
+/* Buttons */
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
 
-        .service-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin: 0;
-        }
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
 
-        /* Technical Stack */
-        .stack-section {
-            margin-bottom: 5rem;
-        }
+.btn-primary {
+    background: var(--text-primary);
+    color: var(--bg);
+    border: 1px solid var(--text-primary);
+}
 
-        .stack-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
+.btn-primary:hover {
+    background: #e5e5e5;
+    transform: translateY(-2px);
+}
 
-        .tag {
-            font-family: 'JetBrains Mono', monospace;
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
 
-        /* Lead Gen / Footer */
-        .lead-gen {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 4rem 2rem;
-            text-align: center;
-            border-radius: 8px;
-            margin-bottom: 4rem;
-        }
+.btn-secondary:hover {
+    background: var(--surface);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+}
 
-        .lead-gen h2 {
-            margin: 0 0 1rem 0;
-            font-size: 2rem;
-        }
+.btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
 
-        .lead-gen p {
-            color: var(--text-secondary);
-            margin: 0 auto 2rem auto;
-            max-width: 500px;
-        }
+/* Typography & Sections */
+.section {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border);
+}
 
-        footer {
-            padding: 2rem 0;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
+.section-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .services-grid { grid-template-columns: 1fr; }
-            .hero { padding: 4rem 0 3rem 0; }
-        }
-    </style>
+.section-header::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* Grid Layouts */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Service Cards */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    background: var(--surface-hover);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Target Audience List */
+.target-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.target-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    background: var(--surface);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+
+.target-list li::before {
+    content: '→';
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Tech Stack Tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.tag {
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border-radius: 4px;
+    transition: var(--transition);
+    cursor: default;
+}
+
+.tag:hover {
+    color: var(--text-primary);
+    border-color: var(--accent);
+    background: var(--accent-glow);
+}
+
+/* Lead/CTA Section */
+.lead {
+    text-align: center;
+    padding: 5rem 2rem;
+    margin: 4rem 0;
+    background: radial-gradient(circle at center, var(--surface-hover) 0%, var(--bg) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.lead h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.lead p {
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* =========================================
+   Mobile Responsiveness
+   ========================================= */
+
+/* Tablets and below */
+@media(max-width: 768px) {
+    header { padding: 1rem 0; }
+    
+    .hero { padding: 4rem 0 3rem; }
+    .hero p { font-size: 1rem; margin-bottom: 2rem; }
+    
+    .btn-group { flex-direction: column; width: 100%; gap: 0.75rem; }
+    .btn { width: 100%; justify-content: center; padding: 1rem; }
+    
+    .section { padding: 3rem 0; }
+    .section-header { margin-bottom: 2rem; }
+    
+    /* Force exact single column on mobile to prevent overflow */
+    .grid { grid-template-columns: 1fr; }
+    .target-list { grid-template-columns: 1fr; }
+    
+    .card { padding: 1.5rem; }
+    
+    .lead { padding: 3rem 1.5rem; margin: 2rem 0; }
+    .lead p { font-size: 1rem; }
+}
+
+/* Ultra-small phones */
+@media(max-width: 480px) {
+    .container { padding: 0 1rem; }
+    
+    .hero h1 { font-size: 2.2rem; }
+    .lead h2 { font-size: 1.6rem; }
+    
+    .tags { gap: 0.5rem; }
+    .tag { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <header>
-            <a href="#" class="logo">shailesh</a>
-            <a href="mailto:contactsh1lezh@gmail.com?subject=Requesting%20an%20Inference%20Optimization%20Audit&body=Hi%20Shailesh%2C%0A%0AI%20am%20interested%20in%20getting%20a%20technical%20audit%20for%20our%20AI%20inference%20pipeline.%20We%20are%20looking%20to%20reduce%20our%20compute%20costs%20and%20optimize%20our%20deployment.%0A%0APlease%20let%20me%20know%20your%20availability%20for%20a%20quick%20discovery%20call.%0A%0ABest%2C%0A%5BYour%20Name%2FCompany%5D" class="nav-cta">Request Audit</a>
-        </header>
-
-        <main>
-            <section class="hero">
-                <h1>Stop wasting compute. Optimize your AI infrastructure.</h1>
-                <p>We provide bare-metal systems engineering to slash your inference costs and deploy machine learning models efficiently on-premise or at the edge.</p>
-                <a href="mailto:contactsh1lezh@gmail.com?subject=Technical%20Audit%20Inquiry%3A%20AI%20Inference&body=Hi%20Shailesh%2C%0A%0AWe%20are%20currently%20running%20into%20bottlenecks%2Fhigh%20costs%20with%20our%20AI%20inference%20and%20want%20to%20explore%20bare-metal%20optimization.%0A%0AI'd%20like%20to%20schedule%20a%20time%20to%20discuss%20an%20audit%20of%20our%20current%20architecture.%0A%0AThanks%2C%0A%5BYour%20Name%2FCompany%5D" class="primary-cta">Get a Technical Audit</a>
-            </section>
-
-            <section class="services">
-                <div class="section-header">Core Services</div>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>01. Inference Optimization Audit</h3>
-                        <p>A rigorous, deep-dive profile of your current ML containers. We identify memory bottlenecks, evaluate compute versus memory-bound constraints, and deliver a technical roadmap to reduce your VRAM footprint and increase tokens-per-second throughput.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>02. On-Premise & Edge Deployment</h3>
-                        <p>Escape cloud API lock-in. We build high-performance, custom inference engines to run your quantized models on local hardware. We ensure maximum efficiency on everything from standard CPU architectures to dedicated GPU clusters.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="stack-section">
-                <div class="section-header">Technical Stack & Methodology</div>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    We approach AI deployment as a systems engineering discipline. Solutions are architected in low-level languages for absolute memory control and speed. We routinely validate edge constraints by testing pipelines on standard consumer hardware before scaling to production environments.
-                </p>
-                <div class="stack-tags">
-                    <span class="tag">C</span>
-                    <span class="tag">C++</span>
-                    <span class="tag">Rust</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">CUDA</span>
-                    <span class="tag">TensorRT</span>
-                    <span class="tag">OpenVINO</span>
-                    <span class="tag">ONNX</span>
-                </div>
-            </section>
-
-            <section class="lead-gen">
-                <h2>Ready to lower your cloud bill?</h2>
-                <p>Book a brief technical discovery call. We'll discuss your current inference pipeline and determine if an optimization audit makes financial sense for your company.</p>
-                <a href="mailto:contactsh1lezh@gmail.com?subject=Inquiry%3A%20AI%20Infrastructure%20%26%20Edge%20Deployment&body=Hi%20Shailesh%2C%0A%0AI%20was%20looking%20at%20your%20services%20and%20would%20like%20to%20discuss%20a%20potential%20project%20regarding%20our%20AI%20infrastructure%20and%20deployment%20needs.%0A%0ALet's%20schedule%20a%20time%20to%20chat.%0A%0ABest%2C%0A%5BYour%20Name%2FCompany%5D" class="primary-cta">Contact</a>
-            </section>
-        </main>
-
-        <footer>
-            <div>© 2026 Shailesh</div>
-        </footer>
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">shailesh<span>.</span></a>
     </div>
+</header>
+
+<main class="container">
+    <section class="hero animate">
+        <h1>Reduce your AI costs.<br>Optimize at every layer.</h1>
+        <p>We help companies cut LLM API bills, eliminate inefficiencies, and deploy high-performance AI systems—from API optimization to edge inference.</p>
+        
+        <div class="btn-group">
+            <a class="btn btn-primary" href="mailto:contactsh1lezh@gmail.com">Get a Technical Audit</a>
+            <a class="btn btn-secondary" href="https://github.com/sh1lezh" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View GitHub
+            </a>
+        </div>
+    </section>
+
+    <section class="section animate" style="animation-delay: 0.2s;">
+        <h3 class="section-header">Core Services</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>LLM API Cost Optimization</h4>
+                <p>Identify wasted tokens, redundant calls, and inefficient model usage. Reduce API costs by 30–70%.</p>
+            </div>
+            <div class="card">
+                <h4>API Middleware & Caching</h4>
+                <p>Build caching, batching, and routing systems to reduce API usage and improve latency.</p>
+            </div>
+            <div class="card">
+                <h4>Inference Optimization</h4>
+                <p>Analyze performance bottlenecks and maximize throughput on existing hardware.</p>
+            </div>
+            <div class="card">
+                <h4>Edge & On-Prem Deployment</h4>
+                <p>Deploy optimized models locally to eliminate cloud dependency and reduce cost.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section animate" style="animation-delay: 0.3s;">
+        <h3 class="section-header">Who This Is For</h3>
+        <ul class="target-list">
+            <li>Startups using LLM APIs heavily</li>
+            <li>SaaS products with core AI features</li>
+            <li>Teams facing high latency or cost issues</li>
+            <li>Companies moving to on-prem AI systems</li>
+        </ul>
+    </section>
+
+    <section class="section animate" style="animation-delay: 0.4s;">
+        <h3 class="section-header">Tech Stack</h3>
+        <div class="tags">
+            <span class="tag">C</span>
+            <span class="tag">C++</span>
+            <span class="tag">Rust</span>
+            <span class="tag">Python</span>
+            <span class="tag">CUDA</span>
+            <span class="tag">TensorRT</span>
+            <span class="tag">ONNX</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Redis</span>
+            <span class="tag">Docker</span>
+        </div>
+    </section>
+
+    <section class="lead animate" style="animation-delay: 0.5s;">
+        <h2>Ready to lower your AI bill?</h2>
+        <p>Let’s analyze your system and identify immediate cost savings.</p>
+        <a class="btn btn-primary" href="mailto:contactsh1lezh@gmail.com">Contact for Audit</a>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        © 2026 Shailesh. All rights reserved.
+    </div>
+</footer>
 
 </body>
 </html>
