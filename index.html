@@ -3,440 +3,506 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shailesh | AI Cost Optimization & Inference Engineering</title>
+<title>SH1 | AI Automations & Infrastructure</title>
+<meta name="description" content="We build reliable AI automations, lower your API bills, and deploy private AI infrastructure for your business.">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+<link rel="manifest" href="favicons/site.webmanifest">
 
 <style>
 :root {
-    
-    --bg: #050505;
-    --surface: #0e0e0e;
-    --surface-hover: #151515;
-    --text-primary: #f5f5f5;
-    --text-secondary: #a1a1aa;
-    --border: #27272a;
-    --border-hover: #3f3f46;
-    --accent: #3b82f6;
-    --accent-glow: rgba(59, 130, 246, 0.15);
-    
-    
-    --container-width: 1000px;
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --transition: 0.3s ease;
+  --bg: #000000;
+  --fg: #ffffff;
+  --gray: #999999;
+  --light-gray: #e0e0e0;
+  --border: #222222;
+  --hover: #111111;
+  --accent: #ffffff;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; 
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 
-.container {
-    max-width: var(--container-width);
-    margin: auto;
-    padding: 0 1.5rem;
+::selection {
+  background: var(--fg);
+  color: var(--bg);
 }
 
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Typography */
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
 }
 
-.animate {
-    animation: fadeUp 0.6s ease forwards;
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
 }
 
+h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
 
+p {
+  color: var(--light-gray);
+  font-size: 1.15rem;
+  max-width: 650px;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: var(--fg);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* Header */
 header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 1.5rem 0;
-}
-
-.header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
 }
 
 .logo {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: -0.5px;
-    color: var(--text-primary);
-    text-decoration: none;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
 }
 
-.logo span {
-    color: var(--accent);
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  font-size: 0.95rem;
 }
 
-
-.hero {
-    padding: 8rem 0 6rem;
-    animation-delay: 0.1s;
-}
-
-.hero h1 {
-    font-size: clamp(2.5rem, 5vw, 3.8rem);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    letter-spacing: -1px;
-    font-weight: 700;
-}
-
-.hero p {
-    color: var(--text-secondary);
-    max-width: 650px;
-    font-size: 1.15rem;
-    margin-bottom: 2.5rem;
-}
-
-
-.btn-group {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
+/* Buttons */
 .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.75rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: var(--radius-sm);
-    transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
 }
 
 .btn-primary {
-    background: var(--text-primary);
-    color: var(--bg);
-    border: 1px solid var(--text-primary);
+  background: var(--fg);
+  color: var(--bg);
+  border: 1px solid var(--fg);
 }
 
 .btn-primary:hover {
-    background: #e5e5e5;
-    transform: translateY(-2px);
+  background: transparent;
+  color: var(--fg);
 }
 
 .btn-secondary {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border);
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
 }
 
 .btn-secondary:hover {
-    background: var(--surface);
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
+  background: var(--hover);
+  border-color: var(--gray);
 }
 
-.btn svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
+/* Hero Section */
+.hero {
+  padding: 6rem 2rem 5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
 }
 
-
-.section {
-    padding: 5rem 0;
-    border-top: 1px solid var(--border);
+.hero p {
+  font-size: 1.3rem;
+  color: var(--gray);
+  margin-bottom: 3rem;
 }
 
-.section-header {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--accent);
-    margin-bottom: 3rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.section-header::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--border);
+/* The Problem Section */
+.problem {
+  padding: 5rem 2rem;
+  background: var(--hover);
+  border-bottom: 1px solid var(--border);
 }
 
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+.problem p {
+  color: var(--gray);
 }
 
-
-.card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
+.problem strong {
+  color: var(--fg);
+  font-weight: 500;
 }
 
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0;
-    transition: var(--transition);
+/* Solutions / Services */
+.solutions {
+  padding: 5rem 2rem;
+  border-bottom: 1px solid var(--border);
 }
 
-.card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-4px);
-    background: var(--surface-hover);
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+.service-card {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: start;
 }
 
-.card:hover::before {
-    opacity: 1;
+.service-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-.card h4 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+.service-title h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
-.card p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
+.service-title span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--gray);
 }
 
-
-.target-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+.service-details ul {
+  list-style: none;
+  margin-top: 1.5rem;
 }
 
-.target-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    color: var(--text-secondary);
-    background: var(--surface);
-    padding: 1rem 1.5rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
+.service-details li {
+  color: var(--gray);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
-.target-list li::before {
-    content: '→';
-    color: var(--accent);
-    font-family: 'JetBrains Mono', monospace;
+.service-details li::before {
+  content: '✓';
+  color: var(--fg);
 }
 
-
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+/* Terminal Proof */
+.terminal {
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  padding: 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-top: 2rem;
 }
 
-.tag {
-    border: 1px solid var(--border);
-    padding: 0.5rem 1rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    background: var(--surface);
-    border-radius: 4px;
-    transition: var(--transition);
-    cursor: default;
+.terminal .cmd { color: var(--fg); }
+.terminal .highlight { color: #ffffff; font-weight: 500; }
+.terminal-line { margin-bottom: 0.5rem; }
+
+/* The Pitch (Why Us) */
+.pitch {
+  padding: 5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
 }
 
-.tag:hover {
-    color: var(--text-primary);
-    border-color: var(--accent);
-    background: var(--accent-glow);
+.pitch-point {
+  margin-bottom: 2rem;
 }
 
-
-.lead {
-    text-align: center;
-    padding: 5rem 2rem;
-    margin: 4rem 0;
-    background: radial-gradient(circle at center, var(--surface-hover) 0%, var(--bg) 100%);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+.pitch-point h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
-.lead h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+.pitch-point p {
+  font-size: 1rem;
 }
 
-.lead p {
-    color: var(--text-secondary);
-    margin-bottom: 2.5rem;
-    font-size: 1.1rem;
+/* CTA Section */
+.cta {
+  padding: 6rem 2rem;
+  text-align: center;
 }
 
+.cta h2 {
+  margin-bottom: 1rem;
+}
 
+.cta p {
+  margin: 0 auto 3rem auto;
+}
+
+/* Footer */
 footer {
-    padding: 2rem 0;
-    border-top: 1px solid var(--border);
-    color: var(--text-secondary);
-    display: flex;
-    justify-content: center;
-    font-size: 0.85rem;
-    font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: var(--gray);
+  border-top: 1px solid var(--border);
 }
 
-
-@media(max-width: 768px) {
-    header { padding: 1rem 0; }
-    
-    .hero { padding: 4rem 0 3rem; }
-    .hero p { font-size: 1rem; margin-bottom: 2rem; }
-    
-    .btn-group { flex-direction: column; width: 100%; gap: 0.75rem; }
-    .btn { width: 100%; justify-content: center; padding: 1rem; }
-    
-    .section { padding: 3rem 0; }
-    .section-header { margin-bottom: 2rem; }
-    
-    
-    .grid { grid-template-columns: 1fr; }
-    .target-list { grid-template-columns: 1fr; }
-    
-    .card { padding: 1.5rem; }
-    
-    .lead { padding: 3rem 1.5rem; margin: 2rem 0; }
-    .lead p { font-size: 1rem; }
-}
-
-
-@media(max-width: 480px) {
-    .container { padding: 0 1rem; }
-    
-    .hero h1 { font-size: 2.2rem; }
-    .lead h2 { font-size: 1.6rem; }
-    
-    .tags { gap: 0.5rem; }
-    .tag { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links a:not(.btn) { display: none; }
+  .nav-links .btn { display: inline-flex; padding: 0.75rem 1.25rem; font-size: 0.85rem; }
+  
+  .service-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .pitch {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  h1 { font-size: 2.5rem; }
+  .btn-group { flex-direction: column; }
+  .btn { width: 100%; }
 }
 </style>
 </head>
-
 <body>
 
 <header>
-    <div class="container header-inner">
-        <a href="#" class="logo">shailesh<span>.</span></a>
-    </div>
+  <a href="#" class="logo">SH1.</a>
+  <nav class="nav-links">
+    <a href="#solutions">Solutions</a>
+    <a href="#process">How it works</a>
+    <!-- Cal.com Trigger Button -->
+    <a class="btn btn-primary" href="https://cal.com/sh1lezh" data-cal-link="sh1lezh">Book a Strategy Call</a>
+  </nav>
 </header>
 
-<main class="container">
-    <section class="hero animate">
-        <h1>Reduce your AI costs.<br>Optimize at every layer.</h1>
-        <p>We help companies cut LLM API bills, eliminate inefficiencies, and deploy high-performance AI systems—from API optimization to edge inference.</p>
-        
-        <div class="btn-group">
-            <a class="btn btn-primary" href="mailto:me@shailesh.site">Get a Technical Audit</a>
-            <!-- <a class="btn btn-secondary" href="https://github.com/sh1lezh" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-                View GitHub
-            </a>  -->
-        </div>
-    </section>
+<main>
+  <section class="hero">
+    <h1>Turn AI into a profit center, not a cost center.</h1>
+    <p>We help businesses replace manual work with reliable AI automations, deploy private infrastructure, and drastically lower LLM API bills. Clean code, clear scopes, real ROI.</p>
+    
+    <div class="btn-group">
+      <!-- Cal.com Trigger Button -->
+      <a class="btn btn-primary" href="https://cal.com/sh1lezh" data-cal-link="sh1lezh">Book a Free Strategy Call</a>
+      <a class="btn btn-secondary" href="#solutions">See our solutions</a>
+    </div>
+  </section>
 
-    <section class="section animate" style="animation-delay: 0.2s;">
-        <h3 class="section-header">Core Services</h3>
-        <div class="grid">
-            <div class="card">
-                <h4>LLM API Cost Optimization</h4>
-                <p>Identify wasted tokens, redundant calls, and inefficient model usage. Reduce API costs by 30–70%.</p>
-            </div>
-            <div class="card">
-                <h4>API Middleware & Caching</h4>
-                <p>Build caching, batching, and routing systems to reduce API usage and improve latency.</p>
-            </div>
-            <div class="card">
-                <h4>Inference Optimization</h4>
-                <p>Analyze performance bottlenecks and maximize throughput on existing hardware.</p>
-            </div>
-            <div class="card">
-                <h4>Edge & On-Prem Deployment</h4>
-                <p>Deploy optimized models locally to eliminate cloud dependency and reduce cost.</p>
-            </div>
-        </div>
-    </section>
+  <section class="problem">
+    <h2>AI is easy to demo. It is incredibly hard to put into production.</h2>
+    <p>You already know AI can save your business hundreds of hours a week. But when you actually try to build it, you run into the same three walls:</p>
+    <br>
+    <p><strong>1. The costs run out of control.</strong> Sending thousands of requests to OpenAI gets expensive fast if you do not have proper routing and caching built in.</p>
+    <p><strong>2. The outputs are unreliable.</strong> A chatbot that hallucinates or breaks on edge cases is worse than having no automation at all.</p>
+    <p><strong>3. The privacy risks are too high.</strong> You cannot afford to send your sensitive customer data or internal company documents to public cloud APIs.</p>
+    <br>
+    <p>That is what we fix. We handle the complex systems engineering so you get AI that just works.</p>
+  </section>
 
-    <section class="section animate" style="animation-delay: 0.3s;">
-        <h3 class="section-header">Who This Is For</h3>
-        <ul class="target-list">
-            <li>Startups using LLM APIs heavily</li>
-            <li>SaaS products with core AI features</li>
-            <li>Teams facing high latency or cost issues</li>
-            <li>Companies moving to on-prem AI systems</li>
+  <section id="solutions" class="solutions">
+    <h3>Our Solutions</h3>
+    <h2>What we build for you.</h2>
+
+    <div class="service-card">
+      <div class="service-title">
+        <span>01 / Automation</span>
+        <h4>Custom AI Workflows</h4>
+      </div>
+      <div class="service-details">
+        <p>Stop paying humans to do robot work. We build autonomous workflows that integrate perfectly into your existing software stack.</p>
+        <ul>
+          <li>Customer support ticket routing and drafting</li>
+          <li>Internal document processing and data extraction</li>
+          <li>Automated outbound email and lead qualification</li>
         </ul>
-    </section>
+      </div>
+    </div>
 
-    <section class="section animate" style="animation-delay: 0.4s;">
-        <h3 class="section-header">Tech Stack</h3>
-        <div class="tags">
-            <span class="tag">C</span>
-            <span class="tag">C++</span>
-            <span class="tag">Rust</span>
-            <span class="tag">Python</span>
-            <span class="tag">CUDA</span>
-            <span class="tag">TensorRT</span>
-            <span class="tag">ONNX</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Redis</span>
-            <span class="tag">Docker</span>
+    <div class="service-card">
+      <div class="service-title">
+        <span>02 / Optimization</span>
+        <h4>LLM Cost Reduction</h4>
+      </div>
+      <div class="service-details">
+        <p>Your API bill is probably twice as high as it needs to be. We audit your usage and implement middleware to fix the leak.</p>
+        <ul>
+          <li>Semantic caching to eliminate redundant requests</li>
+          <li>Dynamic model routing (using cheaper models for easy tasks)</li>
+          <li>Average savings of 30 to 70 percent on monthly API spend</li>
+        </ul>
+        <div class="terminal">
+          <div class="terminal-line"><span class="cmd">$</span> sh1-audit output</div>
+          <div class="terminal-line">CURRENT SPEND:    $18,400 / mo</div>
+          <div class="terminal-line highlight">PROJECTED SPEND:  $7,200 / mo</div>
+          <div class="terminal-line highlight">ANNUAL SAVINGS:   $134,400</div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="lead animate" style="animation-delay: 0.5s;">
-        <h2>Ready to lower your AI bill?</h2>
-        <p>Let’s analyze your system and identify immediate cost savings.</p>
-        <a class="btn btn-primary" href="mailto:me@shailesh.site">Contact for Audit</a>
-    </section>
+    <div class="service-card">
+      <div class="service-title">
+        <span>03 / Deployment</span>
+        <h4>Private AI Infrastructure</h4>
+      </div>
+      <div class="service-details">
+        <p>Own your intelligence. We deploy highly optimized open-source models directly onto your private servers or edge devices.</p>
+        <ul>
+          <li>Total data privacy and security</li>
+          <li>Zero recurring cloud API costs</li>
+          <li>Hardware-level inference tuning for maximum speed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="pitch">
+    <div>
+      <h3>How we work</h3>
+      <h2>Fixed scopes. No endless retainers.</h2>
+    </div>
+    <div>
+      <div class="pitch-point">
+        <h4>1. We talk business first.</h4>
+        <p>We start with a free discovery call to understand exactly what problem you are trying to solve and calculate the potential ROI. If we cannot save you time or make you money, we will tell you.</p>
+      </div>
+      <div class="pitch-point">
+        <h4>2. You get a clear roadmap.</h4>
+        <p>We provide a flat-rate proposal with a strict timeline and clearly defined deliverables. No hourly billing surprises. You know exactly what you are paying for.</p>
+      </div>
+      <div class="pitch-point">
+        <h4>3. We build and hand over.</h4>
+        <p>We engineer the solution, integrate it with your systems, and give you clean documentation. You own the code and the systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Stop researching. Start building.</h2>
+    <p>Let's map out exactly how AI can optimize your specific business processes.</p>
+    <div class="btn-group" style="justify-content: center;">
+      <!-- Cal.com Trigger Button -->
+      <a class="btn btn-primary" href="https://cal.com/sh1lezh" data-cal-link="sh1lezh">Book your Strategy Call</a>
+      <a class="btn btn-secondary" href="mailto:shailesh@sh1.site">Send an email</a>
+    </div>
+  </section>
 </main>
 
 <footer>
-    <div class="container">
-        © 2026 Shailesh. All rights reserved.
-    </div>
+  <div>© 2026 SH1 Technologies.</div>
+  <a href="mailto:shailesh@sh1.site">shailesh@sh1.site</a>
 </footer>
+
+<!-- Cal.com Embed Script -->
+<script>
+  (function (C, A, L) { 
+    let p = function (a, ar) { a.q.push(ar); }; 
+    let d = C.document; 
+    C.Cal = C.Cal || function () { 
+      let cal = C.Cal; 
+      let ar = arguments; 
+      if (!cal.loaded) { 
+        cal.ns = {}; 
+        cal.q = cal.q || []; 
+        let s = d.createElement("script");
+        s.src = A;
+        d.head.appendChild(s); 
+        cal.loaded = true; 
+      } 
+      if (ar[0] === L) { 
+        const api = function () { p(api, arguments); }; 
+        const namespace = ar[1]; 
+        api.q = api.q || []; 
+        if (typeof namespace === "string") {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ["initNamespace", namespace]);
+        } else {
+          p(cal, ar);
+        }
+        return;
+      } 
+      p(cal, ar); 
+    }; 
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+  
+  Cal("init", {origin:"https://cal.com"});
+  
+  // Customizes the popup to match your dark aesthetic
+  Cal("ui", {
+    "styles": {
+      "branding": {
+        "brandColor": "#ffffff"
+      }
+    },
+    "hideEventTypeDetails": false,
+    "layout": "month_view"
+  });
+</script>
 
 </body>
 </html>
