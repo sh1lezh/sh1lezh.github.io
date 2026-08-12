@@ -10,13 +10,13 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sh1.site/">
 <meta property="og:title" content="SH1 Technologies">
-<meta property="og:description" content="Official website for SH1 Technologies.">
+<meta property="og:description" content="AI automations, LLM cost reduction, and private AI infrastructure for B2B — built by SH1 Technologies.">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://sh1.site/">
+<meta property="twitter:url" content="https://x.com/sh1lezh">
 <meta property="twitter:title" content="SH1 Technologies">
-<meta property="twitter:description" content="Official website for SH1 Technologies.">
+<meta property="twitter:description" content="AI automations, LLM cost reduction, and private AI infrastructure for B2B — built by SH1 Technologies.">
 <meta property="twitter:site" content="@sh1lezh">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,13 +40,16 @@
   "logo": "https://sh1.site/favicons/favicon-32x32.png",
   "founder": {
     "@type": "Person",
-    "name": "Shailesh"
+    "name": "Shailesh Chauhan"
   },
   "description": "B2B AI consulting agency specializing in custom AI workflows, LLM cost reduction, and private AI infrastructure deployment.",
+  "areaServed": "Worldwide",
+  "availableLanguage": "English",
   "sameAs": [
     "https://www.linkedin.com/in/sh1lezh",
     "https://www.x.com/sh1lezh",
-    "https://www.cal.com/sh1lezh"
+    "https://www.cal.com/sh1lezh",
+    "https://www.instagram.com/sh1lezh"
   ]
 }
 </script>
@@ -90,6 +93,24 @@ body {
   color: var(--bg);
 }
 
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 1rem 1.5rem;
+  z-index: 1000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
 /* Typography */
 h1 {
   font-size: clamp(2.5rem, 6vw, 4rem);
@@ -117,6 +138,17 @@ h3 {
   margin-bottom: 1rem;
 }
 
+.eyebrow {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
 p {
   color: var(--light-gray);
   font-size: 1.15rem;
@@ -132,6 +164,13 @@ a {
 
 a:hover {
   opacity: 0.7;
+}
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
 }
 
 /* Header */
@@ -196,6 +235,20 @@ header {
   border-color: var(--gray);
 }
 
+.btn-tertiary {
+  background: transparent;
+  color: var(--gray);
+  border: none;
+  padding: 1rem 0.5rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.btn-tertiary:hover {
+  color: var(--fg);
+  opacity: 1;
+}
+
 /* Hero Section */
 .hero {
   padding: 6rem 2rem 5rem;
@@ -213,6 +266,7 @@ header {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 /* The Problem Section */
@@ -282,22 +336,66 @@ header {
   color: var(--fg);
 }
 
-/* Terminal Proof */
-.terminal {
-  background: #0a0a0a;
+.pricing-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-top: 1rem;
+}
+
+.pricing-note strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.methodology {
   border: 1px solid var(--border);
   padding: 2rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
-  color: var(--gray);
   margin-top: 2rem;
 }
 
-.terminal .cmd { color: var(--fg); }
-.terminal .highlight { color: #ffffff; font-weight: 500; }
-.terminal-line { margin-bottom: 0.5rem; }
+.methodology-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  margin-bottom: 1.25rem;
+}
 
-/* The Pitch (Why Us) */
+.methodology-step {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.methodology-step:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.methodology-step .step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--gray);
+  min-width: 1.5rem;
+}
+
+.methodology-step .step-body h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--fg);
+  margin-bottom: 0.35rem;
+}
+
+.methodology-step .step-body p {
+  font-size: 0.95rem;
+  color: var(--gray);
+  margin-bottom: 0;
+  max-width: 100%;
+}
+
 .pitch {
   padding: 5rem 2rem;
   border-bottom: 1px solid var(--border);
@@ -320,6 +418,79 @@ header {
   font-size: 1rem;
 }
 
+/* About / Founder Section */
+.about {
+  padding: 5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--fg);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-body h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.about-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--gray);
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+/* FAQ Section */
+.faq {
+  padding: 5rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.faq-item:first-of-type {
+  border-top: none;
+}
+
+.faq-item h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
 /* CTA Section */
 .cta {
   padding: 6rem 2rem;
@@ -334,14 +505,59 @@ header {
   margin: 0 auto 3rem auto;
 }
 
+.cta .btn-group {
+  justify-content: center;
+}
+
+.cta-secondary-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
 /* Footer */
 footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2rem;
   font-size: 0.9rem;
   color: var(--gray);
   border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  color: var(--gray);
+}
+
+.social-links a:hover {
+  color: var(--fg);
+  opacity: 1;
+}
+
+.social-links svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* Responsive */
@@ -358,26 +574,40 @@ footer {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
   
   h1 { font-size: 2.5rem; }
-  .btn-group { flex-direction: column; }
+  .btn-group { flex-direction: column; align-items: stretch; }
   .btn { width: 100%; }
+  .btn-tertiary { text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
 }
 </style>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <header>
   <a href="#" class="logo">SH1.</a>
   <nav class="nav-links">
     <a href="#solutions">Solutions</a>
     <a href="#process">How it works</a>
+    <a href="#about">About</a>
     <!-- Cal.com Trigger Button -->
     <a class="btn btn-primary" href="https://cal.com/sh1lezh" data-cal-link="sh1lezh">Book a Strategy Call</a>
   </nav>
 </header>
 
-<main>
+<main id="main-content">
   <section class="hero">
     <h1>Turn AI into a profit center, not a cost center.</h1>
     <p>We help businesses replace manual work with reliable AI automations, deploy private infrastructure, and drastically lower LLM API bills. Clean code, clear scopes, real ROI.</p>
@@ -386,6 +616,7 @@ footer {
       <!-- Cal.com Trigger Button -->
       <a class="btn btn-primary" href="https://cal.com/sh1lezh" data-cal-link="sh1lezh">Book a Free Strategy Call</a>
       <a class="btn btn-secondary" href="#solutions">See our solutions</a>
+      <a class="btn btn-tertiary" href="mailto:shailesh@sh1.site?subject=Free%20async%20AI%20audit%20request&body=Hi%20Shailesh%2C%0A%0AI'd%20like%20a%20free%20async%20AI%20audit.%20Here's%20a%20bit%20about%20what%20we're%20working%20with%3A%0A%0ACompany%3A%20%0AWhat%20we're%20hoping%20to%20automate%20or%20optimize%3A%20%0ACurrent%20monthly%20AI%2FAPI%20spend%20(if%20known)%3A%20%0A%0AThanks!">Get a free async AI audit</a>
     </div>
   </section>
 
@@ -406,7 +637,7 @@ footer {
 
     <div class="service-card">
       <div class="service-title">
-        <span>01 / Automation</span>
+        <span class="eyebrow">01 / Automation</span>
         <h4>Custom AI Workflows</h4>
       </div>
       <div class="service-details">
@@ -421,36 +652,62 @@ footer {
 
     <div class="service-card">
       <div class="service-title">
-        <span>02 / Optimization</span>
+        <span class="eyebrow">02 / Optimization</span>
         <h4>LLM Cost Reduction</h4>
       </div>
       <div class="service-details">
-        <p>Your API bill is probably twice as high as it needs to be. We audit your usage and implement middleware to fix the leak.</p>
+        <p>Your API bill is probably higher than it needs to be. We audit your usage and implement middleware to fix the leak.</p>
         <ul>
           <li>Semantic caching to eliminate redundant requests</li>
           <li>Dynamic model routing (using cheaper models for easy tasks)</li>
-          <li>Average savings of 30 to 70 percent on monthly API spend</li>
+          <li>Typical savings range from 30 to 70 percent on monthly API spend, depending on current setup</li>
         </ul>
-        <div class="terminal">
-          <div class="terminal-line"><span class="cmd">$</span> sh1-audit output</div>
-          <div class="terminal-line">CURRENT SPEND:    $18,400 / mo</div>
-          <div class="terminal-line highlight">PROJECTED SPEND:  $7,200 / mo</div>
-          <div class="terminal-line highlight">ANNUAL SAVINGS:   $134,400</div>
+        <div class="methodology">
+          <div class="methodology-label">How the audit works</div>
+          <div class="methodology-step">
+            <span class="step-num">01</span>
+            <div class="step-body">
+              <h5>Pull usage logs</h5>
+              <p>We review your API logs to see actual request volume, model mix, and where spend concentrates.</p>
+            </div>
+          </div>
+          <div class="methodology-step">
+            <span class="step-num">02</span>
+            <div class="step-body">
+              <h5>Flag redundant and oversized calls</h5>
+              <p>We identify repeated queries that could be cached and tasks running on a model more powerful (and expensive) than they need.</p>
+            </div>
+          </div>
+          <div class="methodology-step">
+            <span class="step-num">03</span>
+            <div class="step-body">
+              <h5>Model a routing plan</h5>
+              <p>We map which requests can move to cheaper models or a cache layer without a drop in output quality.</p>
+            </div>
+          </div>
+          <div class="methodology-step">
+            <span class="step-num">04</span>
+            <div class="step-body">
+              <h5>Hand you a savings estimate</h5>
+              <p>You get a concrete before/after projection for your usage, not a generic number, before any implementation work starts.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="service-card">
       <div class="service-title">
-        <span>03 / Deployment</span>
+        <span class="eyebrow">03 / Deployment</span>
         <h4>Private AI Infrastructure</h4>
       </div>
       <div class="service-details">
         <p>Own your intelligence. We deploy highly optimized open-source models directly onto your private servers or edge devices.</p>
         <ul>
-          <li>Total data privacy and security</li>
+          <li>Total data privacy, facilitating SOC 2, HIPAA, and GDPR compliance</li>
+          <li>Deploying top-tier open models</li>
+          <li>Hardware-level inference tuning for maximum speed (vLLM, TensorRT)</li>
           <li>Zero recurring cloud API costs</li>
-          <li>Hardware-level inference tuning for maximum speed</li>
         </ul>
       </div>
     </div>
@@ -468,29 +725,86 @@ footer {
       </div>
       <div class="pitch-point">
         <h4>2. You get a clear roadmap.</h4>
-        <p>We provide a flat-rate proposal with a strict timeline and clearly defined deliverables. No hourly billing surprises. You know exactly what you are paying for.</p>
+        <p>We provide a flat-rate proposal with a strict timeline and clearly defined deliverables. No hourly billing surprises. Free discovery call first, flat-rate proposal after — you know exactly what you're paying for before any work begins.</p>
       </div>
       <div class="pitch-point">
         <h4>3. We build and hand over.</h4>
-        <p>We engineer the solution, integrate it with your systems, and give you clean documentation. You own the code and the systems.</p>
+        <p>We engineer the solution, integrate it with your systems, and give you clean documentation. You own the code and the systems from day one. Optional maintenance retainers are available if you need ongoing model updates and support.</p>
       </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="avatar">
+      <!-- [PLACEHOLDER: update filename below to match your actual image in /favicons] -->
+      <img src="favicons/shailesh.png" alt="Shailesh Chauhan, founder of SH1 Technologies">
+    </div>
+    <div class="about-body">
+      <h3>About</h3>
+      <h4>Shailesh Chauhan</h4>
+      <span class="about-role">Founder, SH1</span>
+      <p>I started SH1 because I saw too many businesses getting burned by fragile AI wrappers and bloated retainers. We believe in shipping robust, private, and cost-effective infrastructure that actually delivers ROI, built on trust and technical transparency.</p>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h3>Common Questions</h3>
+    <h2>Before you book a call.</h2>
+
+    <div class="faq-item">
+      <h4>Are you a solo agency or a team?</h4>
+      <p>Right now it's just me, Shailesh, working directly on every engagement, and I bring in trusted contractors for specialized work when a project needs it.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>You're new, why should I trust you with production AI systems?</h4>
+      <p>Fair question. So instead I lean on a transparent process: a free discovery call where we scope the real problem, a fixed-scope proposal so there's no ambiguity about what you're paying for, and the option to start with a small paid pilot before committing to anything larger.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>What if the automation breaks after handover?</h4>
+      <p>You get documentation and a defined warranty window for fixes at no extra cost. After that, optional maintenance retainers cover ongoing monitoring and updates, but you always own the code and can maintain it yourself or hand it to another team.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Do you sign NDAs / handle data securely?</h4>
+      <p>Yes, I'll sign an NDA before any discovery call that involves sensitive details. For private infrastructure engagements, your data stays on your own servers rather than passing through third-party APIs.</p>
     </div>
   </section>
 
   <section class="cta">
     <h2>Stop researching. Start building.</h2>
     <p>Let's map out exactly how AI can optimize your specific business processes.</p>
-    <div class="btn-group" style="justify-content: center;">
+    <div class="btn-group">
       <!-- Cal.com Trigger Button -->
       <a class="btn btn-primary" href="https://cal.com/sh1lezh" data-cal-link="sh1lezh">Book your Strategy Call</a>
       <a class="btn btn-secondary" href="mailto:shailesh@sh1.site">Send an email</a>
+    </div>
+    <div class="cta-secondary-links">
+      <a href="mailto:shailesh@sh1.site?subject=Free%20async%20AI%20audit%20request&body=Hi%20Shailesh%2C%0A%0AI'd%20like%20a%20free%20async%20AI%20audit.%20Here's%20a%20bit%20about%20what%20we're%20working%20with%3A%0A%0ACompany%3A%20%0AWhat%20we're%20hoping%20to%20automate%20or%20optimize%3A%20%0ACurrent%20monthly%20AI%2FAPI%20spend%20(if%20known)%3A%20%0A%0AThanks!">Get a free async AI audit</a>
+      <a href="mailto:shailesh@sh1.site?subject=Sample%20workflow%20teardown%20request&body=Hi%20Shailesh%2C%0A%0ACould%20you%20send%20over%20a%20sample%20workflow%20teardown%3F%20I'd%20like%20to%20see%20an%20example%20of%20how%20you%20approach%20automation%20projects.%0A%0AThanks!">See a sample workflow teardown</a>
     </div>
   </section>
 </main>
 
 <footer>
   <div>© 2026 SH1 Technologies.</div>
-  <!-- <a href="mailto:shailesh@sh1.site">shailesh@sh1.site</a> -->
+  <div class="footer-links">
+    <div class="social-links">
+      <a href="mailto:shailesh@sh1.site" aria-label="Email" title="shailesh@sh1.site">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg>
+      </a>
+      <a href="https://x.com/sh1lezh" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/sh1lezh" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.558V9h3.556v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/sh1lezh" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+    </div>
+  </div>
 </footer>
 
 <!-- Cal.com Embed Script -->

@@ -1,11 +1,6 @@
-# =============================================================================
-# 1. GLOBAL DIRECTIVES
-# =============================================================================
 User-agent: *
 Allow: /
 
-# Security & Crawl Budget: Block access to standard backend/private areas.
-# NOTE: Update these paths based on your actual architecture (e.g., /wp-admin/ for WordPress).
 Disallow: /admin/
 Disallow: /login/
 Disallow: /dashboard/
@@ -18,13 +13,13 @@ Disallow: /*?s=*
 Disallow: /*?sort=*
 Disallow: /*?filter=*
 
-# =============================================================================
-# 2. EXPLICITLY PERMITTED AI BOTS (Your current configuration)
-# =============================================================================
 User-agent: Google-Extended
 Allow: /
 
 User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
@@ -36,45 +31,40 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-# Adding Anthropic's general crawler to fully support Claude's ecosystem.
-User-agent: Anthropic-ai
+User-agent: Claude-User
 Allow: /
 
-# =============================================================================
-# 3. RATE LIMITING FOR HEAVY SEO CRAWLERS (Optional)
-# =============================================================================
-# These bots can consume significant server resources. Crawl-delay slows them down.
-# The number represents seconds between successive requests.
+User-agent: Claude-SearchBot
+Allow: /
+
 User-agent: AhrefsBot
-Crawl-delay: 10
+Allow: /
 
 User-agent: SemrushBot
-Crawl-delay: 10
+Allow: /
 
 User-agent: DotBot
-Crawl-delay: 10
+Allow: /
 
 User-agent: MJ12bot
-Crawl-delay: 10
+Allow: /
 
-# =============================================================================
-# 4. BLOCKED AGGRESSIVE / NON-ESSENTIAL SCRAPERS (Optional)
-# =============================================================================
-# Block crawlers known for aggressive scraping or originating from markets 
-# you may not target (e.g., Baidu/China, Yandex/Russia). Remove if you need them.
 User-agent: Baiduspider
-Disallow: /
+Allow: /
+
+User-agent: Yandex
+Allow: /
 
 User-agent: YandexBot
-Disallow: /
+Allow: /
 
 User-agent: PetalBot
-Disallow: /
+Allow: /
 
 User-agent: Bytespider
-Disallow: /
+Allow: /
 
-# =============================================================================
-# 5. SITEMAP
-# =============================================================================
+User-agent: Claude-Web
+Allow: /
+
 Sitemap: https://sh1.site/sitemap.xml
