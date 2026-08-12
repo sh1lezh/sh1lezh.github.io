@@ -21,6 +21,9 @@ Disallow: /*?filter=*
 # =============================================================================
 # 2. EXPLICITLY PERMITTED AI BOTS (Your current configuration)
 # =============================================================================
+User-agent: Google-Extended
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
